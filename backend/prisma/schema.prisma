@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  TENANT
+  LANDLORD
+  ADMIN
+}
+
+enum ListingStatus {
+  DRAFT
+  PENDING_REVIEW
+  ACTIVE
+  REJECTED
+  ARCHIVED
+}
+
+enum PropertyType {
+  APARTMENT
+  ROOM
+  HOUSE
+  STUDIO
+  COMMERCIAL
+}
+
+enum ViewingStatus {
+  PENDING
+  CONFIRMED
+  DECLINED
+  CANCELLED
+}
+
+model User {
+  id         String    @id @default(ulid()) @db.Uuid
+  email      String    @unique @db.VarChar(255)
+  phone      String?   @db.VarChar(20)
+  firstName  String?   @map("first_name") @db.VarChar(50)
+  lastName   String?   @map("last_name") @db.VarChar(50)
+  role       Role      @default(TENANT)
+  isVerified Boolean   @default(false) @map("is_verified")
+  verifiedAt DateTime? @map("verified_at") @db.Timestamptz()
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt  DateTime  @updatedAt @map("updated_at") @db.Timestamptz()
+
+  listings         Listing[]
+  viewingRequests         ViewingRequest[]
+  favorited        Favorite[]
+  views            ListingView[]
+  sentMessages     Message[]        @relation("SentMessages")
+  receivedMessages Message[]        @relation("ReceivedMessages")
+
+  @@map("users")
+}
+
+model Listing {
+  id           String        @id @default(ulid()) @db.Uuid
+  landlordId   String        @map("landlord_id") @db.Uuid
+  title        String        @db.VarChar(150)
+  description  String?       @db.VarChar(1000)
+  status       ListingStatus @default(DRAFT)
+  propertyType PropertyType  @map("property_type")
+  rooms        Int?          @default(1)
+  area         Decimal       @db.Decimal(8, 2)
+  priceMonth   Decimal       @map("price_month") @db.Decimal(10, 2)
+  city         String        @db.VarChar(50)
+  lat          Decimal       @db.Decimal(9, 6)
+  lng          Decimal       @db.Decimal(9, 6)
+  isVerified   Boolean       @default(false) @map("is_verified")
+  verifiedAt   DateTime?     @map("verified_at") @db.Timestamptz()
+  createdAt    DateTime      @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt    DateTime      @updatedAt @map("updated_at") @db.Timestamptz()
+
+  photos          ListingPhoto[]
+  viewingRequests ViewingRequest[]
+  favorites       Favorite[]
+  views           ListingView[]
+  messages        Message[]
+
+  landlord User @relation(fields: [landlordId], references: [id])
+
+  @@map("listings")
+}
+
+model ListingPhoto {
+  id        String @id @default(ulid()) @db.Uuid
+  listingId String @map("listing_id") @db.Uuid
+  url       String @db.VarChar(255)
+  sortOrder Int    @default(1) @map("sort_order")
+
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@map("listing_photos")
+}
+
+model ViewingRequest {
+  id          String        @id @default(ulid()) @db.Uuid
+  listingId   String?       @map("listing_id") @db.Uuid
+  tenantId    String?       @map("tenant_id") @db.Uuid
+  status      ViewingStatus @default(PENDING)
+  message     String?       @db.VarChar(500)
+  requestedAt DateTime      @default(now()) @map("requested_at") @db.Timestamptz()
+  updatedAt   DateTime      @updatedAt @map("updated_at") @db.Timestamptz()
+
+  listing Listing? @relation(fields: [listingId], references: [id], onDelete: SetNull)
+  tenant  User?    @relation(fields: [tenantId], references: [id], onDelete: SetNull)
+
+  @@map("viewing_requests")
+}
+
+model Favorite {
+  userId    String   @map("user_id") @db.Uuid
+  listingId String   @map("listing_id") @db.Uuid
+  savedAt   DateTime @default(now()) @map("saved_at") @db.Timestamptz()
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  @@id([userId, listingId]) // составной ключ
+  @@map("favorites")
+}
+
+model ListingView {
+  id        String   @id @default(ulid()) @db.Uuid
+  listingId String   @map("listing_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  viewedAt  DateTime @default(now()) @map("viewed_at") @db.Timestamptz()
+
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("listing_views")
+}
+
+model Message {
+  id          String   @id @default(ulid()) @db.Uuid
+  senderId    String?  @map("sender_id") @db.Uuid
+  recipientId String?  @map("recipient_id") @db.Uuid
+  listingId   String?  @map("listing_id") @db.Uuid
+  body        String   @db.VarChar(1000)
+  isRead      Boolean  @default(false) @map("is_read")
+  sentAt      DateTime @default(now()) @map("sent_at") @db.Timestamptz()
+
+  sender    User?    @relation("SentMessages", fields: [senderId], references: [id], onDelete: SetNull)
+  recipient User?    @relation("ReceivedMessages", fields: [recipientId], references: [id], onDelete: SetNull)
+  listing   Listing? @relation(fields: [listingId], references: [id], onDelete: SetNull)
+
+  @@map("messages")
+}
