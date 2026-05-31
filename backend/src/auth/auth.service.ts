@@ -1,5 +1,6 @@
 import { PrismaService } from '@/database';
 import { MailService } from '@/mail/mail.service';
+import { JwtService } from '@nestjs/jwt';
 import { InjectRedis } from '@nestjs-modules/ioredis';
 import {
   BadRequestException,
@@ -8,6 +9,7 @@ import {
 } from '@nestjs/common';
 import Redis from 'ioredis';
 import { SendOtpDTO, VerifyOtpDTO } from './dto';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class AuthService {
@@ -15,6 +17,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     @InjectRedis() private readonly redis: Redis,
     private readonly mailService: MailService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async sendOtp({ email }: SendOtpDTO): Promise<{ message: string }> {
@@ -28,7 +31,10 @@ export class AuthService {
     return { message: 'Код отправлен на почту' };
   }
 
-  async verifyOtp({ email, code }: VerifyOtpDTO): Promise<{ user: any }> {
+  async verifyOtp({
+    email,
+    code,
+  }: VerifyOtpDTO): Promise<{ accessToken: string }> {
     const attempts = await this.redis.incr(`otp:attempts:${email}`);
 
     if (attempts > 5) {
@@ -46,10 +52,17 @@ export class AuthService {
 
     const user = await this.prisma.user.upsert({
       where: { email },
-      create: { email, isVerified: true, verifiedAt: new Date() },
+      create: {
+        email,
+        isVerified: true,
+        verifiedAt: new Date(),
+        id: randomUUID(),
+      },
       update: { isVerified: true, verifiedAt: new Date() },
     });
 
-    return { user };
+    const accessToken = this.jwtService.sign({ userId: user.id });
+
+    return { accessToken };
   }
 }
