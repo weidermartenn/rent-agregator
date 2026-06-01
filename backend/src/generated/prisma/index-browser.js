@@ -126,6 +126,9 @@ exports.Prisma.UserScalarFieldEnum = {
   phone: 'phone',
   firstName: 'firstName',
   lastName: 'lastName',
+  city: 'city',
+  lat: 'lat',
+  lng: 'lng',
   role: 'role',
   isVerified: 'isVerified',
   verifiedAt: 'verifiedAt',
@@ -207,8 +210,7 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 exports.Role = exports.$Enums.Role = {
-  TENANT: 'TENANT',
-  LANDLORD: 'LANDLORD',
+  USER: 'USER',
   ADMIN: 'ADMIN'
 };
 

@@ -3,6 +3,7 @@ import { PrismaModule } from './database';
 import { RedisModule } from '@nestjs-modules/ioredis';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ConfigModule } from '@nestjs/config';
       url: process.env.REDIS_URL,
     }),
     AuthModule,
+    UsersModule,
   ],
 })
 export class AppModule {}

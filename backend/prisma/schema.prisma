@@ -8,8 +8,7 @@ datasource db {
 }
 
 enum Role {
-  TENANT
-  LANDLORD
+  USER
   ADMIN
 }
 
@@ -45,7 +44,7 @@ model User {
   city       String?   @db.VarChar(50)
   lat        Decimal?  @db.Decimal(9, 6)
   lng        Decimal?  @db.Decimal(9, 6)
-  role       Role      @default(TENANT)
+  role       Role      @default(USER)
   isVerified Boolean   @default(false) @map("is_verified")
   verifiedAt DateTime? @map("verified_at") @db.Timestamptz()
   createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz()
