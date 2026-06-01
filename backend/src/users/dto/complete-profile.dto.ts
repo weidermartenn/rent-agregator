@@ -1,4 +1,12 @@
-import { IsOptional, IsPhoneNumber, IsString, Length } from 'class-validator';
+import {
+  IsNumber,
+  IsOptional,
+  IsPhoneNumber,
+  IsString,
+  Length,
+  Max,
+  Min,
+} from 'class-validator';
 
 export class CompleteProfileDTO {
   @IsOptional()
@@ -14,4 +22,20 @@ export class CompleteProfileDTO {
   @IsOptional()
   @IsPhoneNumber()
   phone?: string;
+
+  @IsOptional()
+  @Length(1, 50)
+  city?: string;
+
+  @IsOptional()
+  @IsNumber()
+  @Min(-90)
+  @Max(90)
+  lat?: number;
+
+  @IsOptional()
+  @IsNumber()
+  @Min(-180)
+  @Max(180)
+  lng?: number;
 }

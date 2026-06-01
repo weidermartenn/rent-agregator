@@ -55,7 +55,7 @@ export class AuthService {
       create: {
         email,
         isVerified: true,
-        verifiedAt: new Date(),
+        verifiedAt: new Date().toISOString(),
         id: randomUUID(),
       },
       update: { isVerified: true, verifiedAt: new Date() },
