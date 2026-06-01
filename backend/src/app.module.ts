@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { PrismaModule } from './database';
 import { RedisModule } from '@nestjs-modules/ioredis';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from '@/auth';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
+import { ListingsModule } from './listings/listings.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { UsersModule } from './users/users.module';
     }),
     AuthModule,
     UsersModule,
+    ListingsModule,
   ],
 })
 export class AppModule {}
