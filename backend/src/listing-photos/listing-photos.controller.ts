@@ -9,49 +9,49 @@ import {
   Param,
   Patch,
   Post,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { ListingPhotosService } from './listing-photos.service';
-import {
-  CreateListingPhotoDTO,
-  GetListingPhotoParamsDTO,
-  ReadManyListingPhotosDTO,
-  UpdateListingPhotoDTO,
-} from './dto';
+import { ReadManyListingPhotosDTO, UpdateListingPhotoDTO } from './dto';
+import type { MulterFile } from '@/storage';
 
-@Controller('listing-photos')
+@Controller('listings/:listingId/photos')
 export class ListingPhotosController {
   constructor(private readonly service: ListingPhotosService) {}
 
   @Get()
-  getListingPhotos(listingId: string): Promise<ReadManyListingPhotosDTO> {
+  getListingPhotos(
+    @Param('listingId') listingId: string,
+  ): Promise<ReadManyListingPhotosDTO> {
     return this.service.getListingPhotos(listingId);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post(':listingId')
-  create(
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadPhoto(
     @Param('listingId') listingId: string,
-    @Body() data: CreateListingPhotoDTO,
+    @UploadedFile() file: MulterFile,
   ): Promise<{ message: string }> {
-    return this.service.create(data, listingId);
+    return this.service.uploadPhoto(listingId, file);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch(':listingPhotoId')
+  @Patch(':photoId')
   update(
-    @Param() { listingPhotoId }: GetListingPhotoParamsDTO,
+    @Param('photoId') listingPhotoId: string,
     @Body() data: UpdateListingPhotoDTO,
   ): Promise<{ message: string }> {
     return this.service.update(listingPhotoId, data);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':listingId')
+  @Delete(':photoId')
   @HttpCode(HttpStatus.NO_CONTENT)
-  delete(
-    @Param() { listingPhotoId }: GetListingPhotoParamsDTO,
-  ): Promise<{ message: string }> {
-    return this.service.delete(listingPhotoId);
+  delete(@Param('photoId') photoId: string): Promise<{ message: string }> {
+    return this.service.delete(photoId);
   }
 }

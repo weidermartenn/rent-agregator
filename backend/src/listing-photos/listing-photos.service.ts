@@ -1,18 +1,18 @@
 import { PrismaService } from '@/database';
 import { ReadListingPhotosMapper } from '@/mappers';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import {
-  CreateListingPhotoDTO,
-  ReadManyListingPhotosDTO,
-  UpdateListingPhotoDTO,
-} from './dto';
+import { ReadManyListingPhotosDTO, UpdateListingPhotoDTO } from './dto';
 import { randomUUID } from 'crypto';
+import { MulterFile, StorageService } from '@/storage';
 
 @Injectable()
 export class ListingPhotosService {
   private readonly mapper = new ReadListingPhotosMapper();
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly storage: StorageService,
+  ) {}
 
   async getListingPhotos(listingId: string): Promise<ReadManyListingPhotosDTO> {
     const data = await this.prisma.listingPhoto.findMany({
@@ -27,15 +27,34 @@ export class ListingPhotosService {
     return this.mapper.mapAll(data, count);
   }
 
-  async create(
-    data: CreateListingPhotoDTO,
+  async uploadPhoto(
     listingId: string,
+    file: MulterFile,
   ): Promise<{ message: string }> {
-    await this.prisma.listingPhoto.create({
-      data: { ...data, id: randomUUID(), listingId },
+    const ext = file.originalname.split('.').pop() ?? 'jpg';
+    const key = `${listingId}/${randomUUID()}.${ext}`;
+
+    const url = await this.storage.upload(
+      'listing_photos',
+      key,
+      file.buffer,
+      file.mimetype,
+    );
+
+    const count = await this.prisma.listingPhoto.count({
+      where: { listingId },
     });
 
-    return { message: 'Фотография добавлена' };
+    await this.prisma.listingPhoto.create({
+      data: {
+        id: randomUUID(),
+        listingId,
+        url,
+        sortOrder: count + 1,
+      },
+    });
+
+    return { message: 'Фотография загружена' };
   }
 
   async update(
@@ -56,14 +75,14 @@ export class ListingPhotosService {
     return { message: 'Фотография обновлена' };
   }
 
-  async delete(listingId: string): Promise<{ message: string }> {
-    const listing = await this.prisma.listingPhoto.findUnique({
-      where: { id: listingId },
+  async delete(photoId: string): Promise<{ message: string }> {
+    const photo = await this.prisma.listingPhoto.findUnique({
+      where: { id: photoId },
     });
 
-    if (!listing) throw new NotFoundException('Фотография не найдена');
+    if (!photo) throw new NotFoundException('Фотография не найдена');
 
-    await this.prisma.listingPhoto.delete({ where: { id: listingId } });
+    await this.prisma.listingPhoto.delete({ where: { id: photoId } });
 
     return { message: 'Фотография удалена' };
   }
