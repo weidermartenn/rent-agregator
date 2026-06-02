@@ -1,4 +1,5 @@
 import { ListingStatus, PropertyType } from '@/generated/prisma';
+import { ReadListingPhotoDTO } from '@/listing-photos/dto/read.listing-photo.dto';
 
 export class ReadListingDTO {
   id!: string;
@@ -12,4 +13,6 @@ export class ReadListingDTO {
   priceMonth!: number;
   city!: string;
   createdAt!: Date;
+
+  photos!: ReadListingPhotoDTO[];
 }

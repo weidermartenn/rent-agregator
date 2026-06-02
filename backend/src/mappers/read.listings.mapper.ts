@@ -1,9 +1,14 @@
-import { Listing } from '@/generated/prisma';
-import { ReadManyListingsDTO } from '@/listings/dto/read-many.listings.dto';
-import { ReadListingDTO } from '@/listings/dto/read.listing.dto';
+import { Listing, ListingPhoto } from '@/generated/prisma';
+import { ReadManyListingsDTO, ReadListingDTO } from '@/listings/dto';
+import { ReadListingPhotosMapper } from '@/mappers';
+
+type AllListingsFields = Listing & {
+  photos: ListingPhoto[];
+};
 
 export class ReadListingsMapper {
-  public mapOne(listing: Listing): ReadListingDTO {
+  private readonly listingPhotosMapper = new ReadListingPhotosMapper();
+  public mapOne(listing: AllListingsFields): ReadListingDTO {
     return {
       id: listing.id,
       landlordId: listing.landlordId,
@@ -16,10 +21,11 @@ export class ReadListingsMapper {
       priceMonth: listing.priceMonth.toNumber(),
       city: listing.city,
       createdAt: listing.createdAt,
+      photos: listing.photos.map((one) => this.listingPhotosMapper.mapOne(one)),
     };
   }
 
-  public mapAll(data: Listing[], count: number): ReadManyListingsDTO {
+  public mapAll(data: AllListingsFields[], count: number): ReadManyListingsDTO {
     return {
       count,
       data: data.map((one) => this.mapOne(one)),

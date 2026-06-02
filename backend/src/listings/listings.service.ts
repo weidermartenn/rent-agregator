@@ -54,6 +54,7 @@ export class ListingsService {
 
     const data = await this.prisma.listing.findMany({
       where,
+      include: { photos: { orderBy: { sortOrder: 'asc' } } },
       orderBy: { [query.sortBy ?? 'createdAt']: query.sortOrder ?? 'desc' },
       take: query.take,
       skip: query.skip,
@@ -64,19 +65,22 @@ export class ListingsService {
     return this.mapper.mapAll(data, count);
   }
 
-  async create(data: CreateListingDTO, landlordId: string): Promise<string> {
+  async create(
+    data: CreateListingDTO,
+    landlordId: string,
+  ): Promise<{ message: string }> {
     await this.prisma.listing.create({
       data: { ...data, id: randomUUID(), landlordId },
     });
 
-    return 'Объявление создано';
+    return { message: 'Объявление создано' };
   }
 
   async update(
     listingId: string,
     userId: string,
     data: UpdateListingDTO,
-  ): Promise<string> {
+  ): Promise<{ message: string }> {
     const listing = await this.prisma.listing.findUnique({
       where: { id: listingId },
     });
@@ -90,10 +94,13 @@ export class ListingsService {
       data,
     });
 
-    return 'Объявление обновлено';
+    return { message: 'Объявление обновлено' };
   }
 
-  async delete(listingId: string, userId: string): Promise<string> {
+  async delete(
+    listingId: string,
+    userId: string,
+  ): Promise<{ message: string }> {
     const listing = await this.prisma.listing.findUnique({
       where: { id: listingId },
     });
@@ -104,6 +111,6 @@ export class ListingsService {
 
     await this.prisma.listing.delete({ where: { id: listingId } });
 
-    return 'Объявление удалено';
+    return { message: 'Объявление удалено' };
   }
 }

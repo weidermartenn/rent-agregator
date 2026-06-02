@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -37,7 +39,7 @@ export class ListingsController {
   create(
     @Body() data: CreateListingDTO,
     @CurrentUser() user: User,
-  ): Promise<string> {
+  ): Promise<{ message: string }> {
     return this.service.create(data, user.id);
   }
 
@@ -47,16 +49,17 @@ export class ListingsController {
     @Param() { listingId }: GetListingParamsDTO,
     @Body() data: UpdateListingDTO,
     @CurrentUser() user: User,
-  ): Promise<string> {
+  ): Promise<{ message: string }> {
     return this.service.update(listingId, user.id, data);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':listingId')
+  @HttpCode(HttpStatus.NO_CONTENT)
   delete(
     @Param() { listingId }: GetListingParamsDTO,
     @CurrentUser() user: User,
-  ): Promise<string> {
+  ): Promise<{ message: string }> {
     return this.service.delete(listingId, user.id);
   }
 }
