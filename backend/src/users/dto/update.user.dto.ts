@@ -3,6 +3,7 @@ import {
   IsOptional,
   IsPhoneNumber,
   IsString,
+  IsUrl,
   Length,
   Max,
   Min,
@@ -22,6 +23,10 @@ export class UpdateUserDTO {
   @IsOptional()
   @IsPhoneNumber()
   phone?: string;
+
+  @IsOptional()
+  @IsUrl()
+  avatarUrl?: string;
 
   @IsOptional()
   @Length(1, 50)

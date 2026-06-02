@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { ListingsModule } from './listings/listings.module';
 import { ListingPhotosModule } from './listing-photos/listing-photos.module';
+import { ViewingRequestModule } from './viewing-request/viewing-request.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ListingPhotosModule } from './listing-photos/listing-photos.module';
     UsersModule,
     ListingsModule,
     ListingPhotosModule,
+    ViewingRequestModule,
   ],
 })
 export class AppModule {}

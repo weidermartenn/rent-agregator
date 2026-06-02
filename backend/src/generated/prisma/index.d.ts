@@ -1643,6 +1643,7 @@ export namespace Prisma {
     phone: string | null
     firstName: string | null
     lastName: string | null
+    avatarUrl: string | null
     city: string | null
     lat: Decimal | null
     lng: Decimal | null
@@ -1659,6 +1660,7 @@ export namespace Prisma {
     phone: string | null
     firstName: string | null
     lastName: string | null
+    avatarUrl: string | null
     city: string | null
     lat: Decimal | null
     lng: Decimal | null
@@ -1675,6 +1677,7 @@ export namespace Prisma {
     phone: number
     firstName: number
     lastName: number
+    avatarUrl: number
     city: number
     lat: number
     lng: number
@@ -1703,6 +1706,7 @@ export namespace Prisma {
     phone?: true
     firstName?: true
     lastName?: true
+    avatarUrl?: true
     city?: true
     lat?: true
     lng?: true
@@ -1719,6 +1723,7 @@ export namespace Prisma {
     phone?: true
     firstName?: true
     lastName?: true
+    avatarUrl?: true
     city?: true
     lat?: true
     lng?: true
@@ -1735,6 +1740,7 @@ export namespace Prisma {
     phone?: true
     firstName?: true
     lastName?: true
+    avatarUrl?: true
     city?: true
     lat?: true
     lng?: true
@@ -1838,6 +1844,7 @@ export namespace Prisma {
     phone: string | null
     firstName: string | null
     lastName: string | null
+    avatarUrl: string | null
     city: string | null
     lat: Decimal | null
     lng: Decimal | null
@@ -1873,6 +1880,7 @@ export namespace Prisma {
     phone?: boolean
     firstName?: boolean
     lastName?: boolean
+    avatarUrl?: boolean
     city?: boolean
     lat?: boolean
     lng?: boolean
@@ -1896,6 +1904,7 @@ export namespace Prisma {
     phone?: boolean
     firstName?: boolean
     lastName?: boolean
+    avatarUrl?: boolean
     city?: boolean
     lat?: boolean
     lng?: boolean
@@ -1912,6 +1921,7 @@ export namespace Prisma {
     phone?: boolean
     firstName?: boolean
     lastName?: boolean
+    avatarUrl?: boolean
     city?: boolean
     lat?: boolean
     lng?: boolean
@@ -1928,6 +1938,7 @@ export namespace Prisma {
     phone?: boolean
     firstName?: boolean
     lastName?: boolean
+    avatarUrl?: boolean
     city?: boolean
     lat?: boolean
     lng?: boolean
@@ -1938,7 +1949,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "firstName" | "lastName" | "city" | "lat" | "lng" | "role" | "isVerified" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "firstName" | "lastName" | "avatarUrl" | "city" | "lat" | "lng" | "role" | "isVerified" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     listings?: boolean | User$listingsArgs<ExtArgs>
     viewingRequests?: boolean | User$viewingRequestsArgs<ExtArgs>
@@ -1967,6 +1978,7 @@ export namespace Prisma {
       phone: string | null
       firstName: string | null
       lastName: string | null
+      avatarUrl: string | null
       city: string | null
       lat: Prisma.Decimal | null
       lng: Prisma.Decimal | null
@@ -2409,6 +2421,7 @@ export namespace Prisma {
     readonly phone: FieldRef<"User", 'String'>
     readonly firstName: FieldRef<"User", 'String'>
     readonly lastName: FieldRef<"User", 'String'>
+    readonly avatarUrl: FieldRef<"User", 'String'>
     readonly city: FieldRef<"User", 'String'>
     readonly lat: FieldRef<"User", 'Decimal'>
     readonly lng: FieldRef<"User", 'Decimal'>
@@ -9874,6 +9887,7 @@ export namespace Prisma {
     phone: 'phone',
     firstName: 'firstName',
     lastName: 'lastName',
+    avatarUrl: 'avatarUrl',
     city: 'city',
     lat: 'lat',
     lng: 'lng',
@@ -10138,6 +10152,7 @@ export namespace Prisma {
     phone?: StringNullableFilter<"User"> | string | null
     firstName?: StringNullableFilter<"User"> | string | null
     lastName?: StringNullableFilter<"User"> | string | null
+    avatarUrl?: StringNullableFilter<"User"> | string | null
     city?: StringNullableFilter<"User"> | string | null
     lat?: DecimalNullableFilter<"User"> | Decimal | DecimalJsLike | number | string | null
     lng?: DecimalNullableFilter<"User"> | Decimal | DecimalJsLike | number | string | null
@@ -10160,6 +10175,7 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     firstName?: SortOrderInput | SortOrder
     lastName?: SortOrderInput | SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
     city?: SortOrderInput | SortOrder
     lat?: SortOrderInput | SortOrder
     lng?: SortOrderInput | SortOrder
@@ -10185,6 +10201,7 @@ export namespace Prisma {
     phone?: StringNullableFilter<"User"> | string | null
     firstName?: StringNullableFilter<"User"> | string | null
     lastName?: StringNullableFilter<"User"> | string | null
+    avatarUrl?: StringNullableFilter<"User"> | string | null
     city?: StringNullableFilter<"User"> | string | null
     lat?: DecimalNullableFilter<"User"> | Decimal | DecimalJsLike | number | string | null
     lng?: DecimalNullableFilter<"User"> | Decimal | DecimalJsLike | number | string | null
@@ -10207,6 +10224,7 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     firstName?: SortOrderInput | SortOrder
     lastName?: SortOrderInput | SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
     city?: SortOrderInput | SortOrder
     lat?: SortOrderInput | SortOrder
     lng?: SortOrderInput | SortOrder
@@ -10231,6 +10249,7 @@ export namespace Prisma {
     phone?: StringNullableWithAggregatesFilter<"User"> | string | null
     firstName?: StringNullableWithAggregatesFilter<"User"> | string | null
     lastName?: StringNullableWithAggregatesFilter<"User"> | string | null
+    avatarUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     city?: StringNullableWithAggregatesFilter<"User"> | string | null
     lat?: DecimalNullableWithAggregatesFilter<"User"> | Decimal | DecimalJsLike | number | string | null
     lng?: DecimalNullableWithAggregatesFilter<"User"> | Decimal | DecimalJsLike | number | string | null
@@ -10667,6 +10686,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -10689,6 +10709,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -10711,6 +10732,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -10733,6 +10755,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -10755,6 +10778,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -10771,6 +10795,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -10787,6 +10812,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -11367,6 +11393,7 @@ export namespace Prisma {
     phone?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    avatarUrl?: SortOrder
     city?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
@@ -11388,6 +11415,7 @@ export namespace Prisma {
     phone?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    avatarUrl?: SortOrder
     city?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
@@ -11404,6 +11432,7 @@ export namespace Prisma {
     phone?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
+    avatarUrl?: SortOrder
     city?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
@@ -13465,6 +13494,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -13486,6 +13516,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -13613,6 +13644,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -13634,6 +13666,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -13814,6 +13847,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -13835,6 +13869,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -13929,6 +13964,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -13950,6 +13986,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -13971,6 +14008,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -13992,6 +14030,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -14080,6 +14119,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -14101,6 +14141,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -14230,6 +14271,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -14251,6 +14293,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -14345,6 +14388,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -14366,6 +14410,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -14387,6 +14432,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -14408,6 +14454,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -14434,6 +14481,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -14455,6 +14503,7 @@ export namespace Prisma {
     phone?: string | null
     firstName?: string | null
     lastName?: string | null
+    avatarUrl?: string | null
     city?: string | null
     lat?: Decimal | DecimalJsLike | number | string | null
     lng?: Decimal | DecimalJsLike | number | string | null
@@ -14543,6 +14592,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -14564,6 +14614,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -14596,6 +14647,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
@@ -14617,6 +14669,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     firstName?: NullableStringFieldUpdateOperationsInput | string | null
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
     lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
