@@ -9,6 +9,7 @@ import { ListingPhotosModule } from './listing-photos/listing-photos.module';
 import { ViewingRequestModule } from './viewing-request/viewing-request.module';
 import { FavoritesModule } from './favorites/favorites.module';
 import { ListingViewsModule } from './listing-views/listing-views.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ListingViewsModule } from './listing-views/listing-views.module';
     ViewingRequestModule,
     FavoritesModule,
     ListingViewsModule,
+    MessagesModule,
   ],
 })
 export class AppModule {}
