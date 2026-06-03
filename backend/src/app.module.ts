@@ -8,6 +8,7 @@ import { ListingsModule } from './listings/listings.module';
 import { ListingPhotosModule } from './listing-photos/listing-photos.module';
 import { ViewingRequestModule } from './viewing-request/viewing-request.module';
 import { FavoritesModule } from './favorites/favorites.module';
+import { ListingViewsModule } from './listing-views/listing-views.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { FavoritesModule } from './favorites/favorites.module';
     ListingPhotosModule,
     ViewingRequestModule,
     FavoritesModule,
+    ListingViewsModule,
   ],
 })
 export class AppModule {}

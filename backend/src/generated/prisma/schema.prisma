@@ -131,11 +131,11 @@ model Favorite {
 model ListingView {
   id        String   @id @default(ulid()) @db.Uuid
   listingId String   @map("listing_id") @db.Uuid
-  userId    String   @map("user_id") @db.Uuid
+  userId    String?  @map("user_id") @db.Uuid
   viewedAt  DateTime @default(now()) @map("viewed_at") @db.Timestamptz()
 
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
-  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("listing_views")
 }

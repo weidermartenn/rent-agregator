@@ -7777,7 +7777,7 @@ export namespace Prisma {
   export type ListingViewGroupByOutputType = {
     id: string
     listingId: string
-    userId: string
+    userId: string | null
     viewedAt: Date
     _count: ListingViewCountAggregateOutputType | null
     _min: ListingViewMinAggregateOutputType | null
@@ -7804,7 +7804,7 @@ export namespace Prisma {
     userId?: boolean
     viewedAt?: boolean
     listing?: boolean | ListingDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | ListingView$userArgs<ExtArgs>
   }, ExtArgs["result"]["listingView"]>
 
   export type ListingViewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7813,7 +7813,7 @@ export namespace Prisma {
     userId?: boolean
     viewedAt?: boolean
     listing?: boolean | ListingDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | ListingView$userArgs<ExtArgs>
   }, ExtArgs["result"]["listingView"]>
 
   export type ListingViewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7822,7 +7822,7 @@ export namespace Prisma {
     userId?: boolean
     viewedAt?: boolean
     listing?: boolean | ListingDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | ListingView$userArgs<ExtArgs>
   }, ExtArgs["result"]["listingView"]>
 
   export type ListingViewSelectScalar = {
@@ -7835,27 +7835,27 @@ export namespace Prisma {
   export type ListingViewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "listingId" | "userId" | "viewedAt", ExtArgs["result"]["listingView"]>
   export type ListingViewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     listing?: boolean | ListingDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | ListingView$userArgs<ExtArgs>
   }
   export type ListingViewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     listing?: boolean | ListingDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | ListingView$userArgs<ExtArgs>
   }
   export type ListingViewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     listing?: boolean | ListingDefaultArgs<ExtArgs>
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | ListingView$userArgs<ExtArgs>
   }
 
   export type $ListingViewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ListingView"
     objects: {
       listing: Prisma.$ListingPayload<ExtArgs>
-      user: Prisma.$UserPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       listingId: string
-      userId: string
+      userId: string | null
       viewedAt: Date
     }, ExtArgs["result"]["listingView"]>
     composites: {}
@@ -8252,7 +8252,7 @@ export namespace Prisma {
   export interface Prisma__ListingViewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     listing<T extends ListingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ListingDefaultArgs<ExtArgs>>): Prisma__ListingClient<$Result.GetResult<Prisma.$ListingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends ListingView$userArgs<ExtArgs> = {}>(args?: Subset<T, ListingView$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8684,6 +8684,25 @@ export namespace Prisma {
      * Limit how many ListingViews to delete.
      */
     limit?: number
+  }
+
+  /**
+   * ListingView.user
+   */
+  export type ListingView$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -10562,16 +10581,16 @@ export namespace Prisma {
     NOT?: ListingViewWhereInput | ListingViewWhereInput[]
     id?: UuidFilter<"ListingView"> | string
     listingId?: UuidFilter<"ListingView"> | string
-    userId?: UuidFilter<"ListingView"> | string
+    userId?: UuidNullableFilter<"ListingView"> | string | null
     viewedAt?: DateTimeFilter<"ListingView"> | Date | string
     listing?: XOR<ListingScalarRelationFilter, ListingWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type ListingViewOrderByWithRelationInput = {
     id?: SortOrder
     listingId?: SortOrder
-    userId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     viewedAt?: SortOrder
     listing?: ListingOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
@@ -10583,16 +10602,16 @@ export namespace Prisma {
     OR?: ListingViewWhereInput[]
     NOT?: ListingViewWhereInput | ListingViewWhereInput[]
     listingId?: UuidFilter<"ListingView"> | string
-    userId?: UuidFilter<"ListingView"> | string
+    userId?: UuidNullableFilter<"ListingView"> | string | null
     viewedAt?: DateTimeFilter<"ListingView"> | Date | string
     listing?: XOR<ListingScalarRelationFilter, ListingWhereInput>
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type ListingViewOrderByWithAggregationInput = {
     id?: SortOrder
     listingId?: SortOrder
-    userId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     viewedAt?: SortOrder
     _count?: ListingViewCountOrderByAggregateInput
     _max?: ListingViewMaxOrderByAggregateInput
@@ -10605,7 +10624,7 @@ export namespace Prisma {
     NOT?: ListingViewScalarWhereWithAggregatesInput | ListingViewScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"ListingView"> | string
     listingId?: UuidWithAggregatesFilter<"ListingView"> | string
-    userId?: UuidWithAggregatesFilter<"ListingView"> | string
+    userId?: UuidNullableWithAggregatesFilter<"ListingView"> | string | null
     viewedAt?: DateTimeWithAggregatesFilter<"ListingView"> | Date | string
   }
 
@@ -11135,13 +11154,13 @@ export namespace Prisma {
     id?: string
     viewedAt?: Date | string
     listing: ListingCreateNestedOneWithoutViewsInput
-    user: UserCreateNestedOneWithoutViewsInput
+    user?: UserCreateNestedOneWithoutViewsInput
   }
 
   export type ListingViewUncheckedCreateInput = {
     id?: string
     listingId: string
-    userId: string
+    userId?: string | null
     viewedAt?: Date | string
   }
 
@@ -11149,20 +11168,20 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     listing?: ListingUpdateOneRequiredWithoutViewsNestedInput
-    user?: UserUpdateOneRequiredWithoutViewsNestedInput
+    user?: UserUpdateOneWithoutViewsNestedInput
   }
 
   export type ListingViewUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     listingId?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ListingViewCreateManyInput = {
     id?: string
     listingId: string
-    userId: string
+    userId?: string | null
     viewedAt?: Date | string
   }
 
@@ -11174,7 +11193,7 @@ export namespace Prisma {
   export type ListingViewUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     listingId?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12594,10 +12613,12 @@ export namespace Prisma {
     update?: XOR<XOR<ListingUpdateToOneWithWhereWithoutViewsInput, ListingUpdateWithoutViewsInput>, ListingUncheckedUpdateWithoutViewsInput>
   }
 
-  export type UserUpdateOneRequiredWithoutViewsNestedInput = {
+  export type UserUpdateOneWithoutViewsNestedInput = {
     create?: XOR<UserCreateWithoutViewsInput, UserUncheckedCreateWithoutViewsInput>
     connectOrCreate?: UserCreateOrConnectWithoutViewsInput
     upsert?: UserUpsertWithoutViewsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutViewsInput, UserUpdateWithoutViewsInput>, UserUncheckedUpdateWithoutViewsInput>
   }
@@ -13319,7 +13340,7 @@ export namespace Prisma {
     NOT?: ListingViewScalarWhereInput | ListingViewScalarWhereInput[]
     id?: UuidFilter<"ListingView"> | string
     listingId?: UuidFilter<"ListingView"> | string
-    userId?: UuidFilter<"ListingView"> | string
+    userId?: UuidNullableFilter<"ListingView"> | string | null
     viewedAt?: DateTimeFilter<"ListingView"> | Date | string
   }
 
@@ -13441,12 +13462,12 @@ export namespace Prisma {
   export type ListingViewCreateWithoutListingInput = {
     id?: string
     viewedAt?: Date | string
-    user: UserCreateNestedOneWithoutViewsInput
+    user?: UserCreateNestedOneWithoutViewsInput
   }
 
   export type ListingViewUncheckedCreateWithoutListingInput = {
     id?: string
-    userId: string
+    userId?: string | null
     viewedAt?: Date | string
   }
 
@@ -14998,7 +15019,7 @@ export namespace Prisma {
 
   export type ListingViewCreateManyListingInput = {
     id?: string
-    userId: string
+    userId?: string | null
     viewedAt?: Date | string
   }
 
@@ -15074,18 +15095,18 @@ export namespace Prisma {
   export type ListingViewUpdateWithoutListingInput = {
     id?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutViewsNestedInput
+    user?: UserUpdateOneWithoutViewsNestedInput
   }
 
   export type ListingViewUncheckedUpdateWithoutListingInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ListingViewUncheckedUpdateManyWithoutListingInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
