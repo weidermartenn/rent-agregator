@@ -20,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={inter.variable}>
-      <body className={`h-full px-2 md:px-5 ${inter.className}`}>
-        <div className="flex flex-col ">
+    <html lang="ru" className={inter.className}>
+      <body className="h-full px-2 md:px-5">
+        <div className="flex flex-col">
           <Header />
           <div className="grow">{children}</div>
         </div>

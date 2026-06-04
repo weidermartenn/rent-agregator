@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Авторизация",
+  description: "Авторизация в приложении",
+};
+
 export default function AuthLayout({
   children,
 }: {
