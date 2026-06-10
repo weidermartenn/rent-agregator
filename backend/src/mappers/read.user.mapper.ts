@@ -10,8 +10,6 @@ export class ReadUserMapper {
       firstName: user.firstName ?? undefined,
       lastName: user.lastName ?? undefined,
       city: user.city ?? undefined,
-      lat: user.lat ? Number(user.lat) : undefined,
-      lng: user.lng ? Number(user.lng) : undefined,
     };
   }
 }
