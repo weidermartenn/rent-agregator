@@ -3,9 +3,53 @@
 :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --secondary: #dbdbdb;
   }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@layer utilities {
+  .bg-background {
+    background-color: var(--background)
+  }
+
+  .text-foreground {
+    color: var(--foreground)
+  }
+
+  .text-secondary {
+    color: var(--secondary)
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary) var(--background);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--background);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 10px;
+    transition: background 0.2s ease;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #bdbdbd;
+  }
+}
+
+button {
+  @apply cursor-pointer;
 }

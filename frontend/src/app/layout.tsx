@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from 'next/font/google'
 import "./globals.css";
 import { Header } from "@/components";
 
 export const metadata: Metadata = {
-  title: "Meter+",
+  title: {
+    default: 'Meter+',
+    template: '%s - Meter+'
+  },
   description: "Агрегатор аренды недвижимости",
 };
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
 
 export default function RootLayout({
   children,
@@ -20,11 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={inter.className}>
-      <body className="h-full px-2 md:px-5">
-        <div className="flex flex-col">
+    <html lang="ru" className="custom-scrollbar">
+      <body className="h-full antialiased">
+        <div className="flex flex-col pt-32">
           <Header />
-          <div className="grow">{children}</div>
+          <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {children}
+          </main>
         </div>
       </body>
     </html>
