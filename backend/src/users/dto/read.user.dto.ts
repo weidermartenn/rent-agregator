@@ -5,6 +5,4 @@ export class ReadUserDTO {
   firstName?: string;
   lastName?: string;
   city?: string;
-  lat?: number;
-  lng?: number;
 }
