@@ -1621,20 +1621,8 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
-  }
-
-  export type UserAvgAggregateOutputType = {
-    lat: Decimal | null
-    lng: Decimal | null
-  }
-
-  export type UserSumAggregateOutputType = {
-    lat: Decimal | null
-    lng: Decimal | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -1645,8 +1633,6 @@ export namespace Prisma {
     lastName: string | null
     avatarUrl: string | null
     city: string | null
-    lat: Decimal | null
-    lng: Decimal | null
     role: $Enums.Role | null
     isVerified: boolean | null
     verifiedAt: Date | null
@@ -1662,8 +1648,6 @@ export namespace Prisma {
     lastName: string | null
     avatarUrl: string | null
     city: string | null
-    lat: Decimal | null
-    lng: Decimal | null
     role: $Enums.Role | null
     isVerified: boolean | null
     verifiedAt: Date | null
@@ -1679,8 +1663,6 @@ export namespace Prisma {
     lastName: number
     avatarUrl: number
     city: number
-    lat: number
-    lng: number
     role: number
     isVerified: number
     verifiedAt: number
@@ -1690,16 +1672,6 @@ export namespace Prisma {
   }
 
 
-  export type UserAvgAggregateInputType = {
-    lat?: true
-    lng?: true
-  }
-
-  export type UserSumAggregateInputType = {
-    lat?: true
-    lng?: true
-  }
-
   export type UserMinAggregateInputType = {
     id?: true
     email?: true
@@ -1708,8 +1680,6 @@ export namespace Prisma {
     lastName?: true
     avatarUrl?: true
     city?: true
-    lat?: true
-    lng?: true
     role?: true
     isVerified?: true
     verifiedAt?: true
@@ -1725,8 +1695,6 @@ export namespace Prisma {
     lastName?: true
     avatarUrl?: true
     city?: true
-    lat?: true
-    lng?: true
     role?: true
     isVerified?: true
     verifiedAt?: true
@@ -1742,8 +1710,6 @@ export namespace Prisma {
     lastName?: true
     avatarUrl?: true
     city?: true
-    lat?: true
-    lng?: true
     role?: true
     isVerified?: true
     verifiedAt?: true
@@ -1790,18 +1756,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UserAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -1832,8 +1786,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
@@ -1846,16 +1798,12 @@ export namespace Prisma {
     lastName: string | null
     avatarUrl: string | null
     city: string | null
-    lat: Decimal | null
-    lng: Decimal | null
     role: $Enums.Role
     isVerified: boolean
     verifiedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -1882,8 +1830,6 @@ export namespace Prisma {
     lastName?: boolean
     avatarUrl?: boolean
     city?: boolean
-    lat?: boolean
-    lng?: boolean
     role?: boolean
     isVerified?: boolean
     verifiedAt?: boolean
@@ -1906,8 +1852,6 @@ export namespace Prisma {
     lastName?: boolean
     avatarUrl?: boolean
     city?: boolean
-    lat?: boolean
-    lng?: boolean
     role?: boolean
     isVerified?: boolean
     verifiedAt?: boolean
@@ -1923,8 +1867,6 @@ export namespace Prisma {
     lastName?: boolean
     avatarUrl?: boolean
     city?: boolean
-    lat?: boolean
-    lng?: boolean
     role?: boolean
     isVerified?: boolean
     verifiedAt?: boolean
@@ -1940,8 +1882,6 @@ export namespace Prisma {
     lastName?: boolean
     avatarUrl?: boolean
     city?: boolean
-    lat?: boolean
-    lng?: boolean
     role?: boolean
     isVerified?: boolean
     verifiedAt?: boolean
@@ -1949,7 +1889,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "firstName" | "lastName" | "avatarUrl" | "city" | "lat" | "lng" | "role" | "isVerified" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "firstName" | "lastName" | "avatarUrl" | "city" | "role" | "isVerified" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     listings?: boolean | User$listingsArgs<ExtArgs>
     viewingRequests?: boolean | User$viewingRequestsArgs<ExtArgs>
@@ -1980,8 +1920,6 @@ export namespace Prisma {
       lastName: string | null
       avatarUrl: string | null
       city: string | null
-      lat: Prisma.Decimal | null
-      lng: Prisma.Decimal | null
       role: $Enums.Role
       isVerified: boolean
       verifiedAt: Date | null
@@ -2423,8 +2361,6 @@ export namespace Prisma {
     readonly lastName: FieldRef<"User", 'String'>
     readonly avatarUrl: FieldRef<"User", 'String'>
     readonly city: FieldRef<"User", 'String'>
-    readonly lat: FieldRef<"User", 'Decimal'>
-    readonly lng: FieldRef<"User", 'Decimal'>
     readonly role: FieldRef<"User", 'Role'>
     readonly isVerified: FieldRef<"User", 'Boolean'>
     readonly verifiedAt: FieldRef<"User", 'DateTime'>
@@ -9908,8 +9844,6 @@ export namespace Prisma {
     lastName: 'lastName',
     avatarUrl: 'avatarUrl',
     city: 'city',
-    lat: 'lat',
-    lng: 'lng',
     role: 'role',
     isVerified: 'isVerified',
     verifiedAt: 'verifiedAt',
@@ -10041,20 +9975,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Role'
    */
   export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
@@ -10132,6 +10052,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
    * Reference to a field of type 'ViewingStatus'
    */
   export type EnumViewingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ViewingStatus'>
@@ -10173,8 +10107,6 @@ export namespace Prisma {
     lastName?: StringNullableFilter<"User"> | string | null
     avatarUrl?: StringNullableFilter<"User"> | string | null
     city?: StringNullableFilter<"User"> | string | null
-    lat?: DecimalNullableFilter<"User"> | Decimal | DecimalJsLike | number | string | null
-    lng?: DecimalNullableFilter<"User"> | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     isVerified?: BoolFilter<"User"> | boolean
     verifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -10196,8 +10128,6 @@ export namespace Prisma {
     lastName?: SortOrderInput | SortOrder
     avatarUrl?: SortOrderInput | SortOrder
     city?: SortOrderInput | SortOrder
-    lat?: SortOrderInput | SortOrder
-    lng?: SortOrderInput | SortOrder
     role?: SortOrder
     isVerified?: SortOrder
     verifiedAt?: SortOrderInput | SortOrder
@@ -10222,8 +10152,6 @@ export namespace Prisma {
     lastName?: StringNullableFilter<"User"> | string | null
     avatarUrl?: StringNullableFilter<"User"> | string | null
     city?: StringNullableFilter<"User"> | string | null
-    lat?: DecimalNullableFilter<"User"> | Decimal | DecimalJsLike | number | string | null
-    lng?: DecimalNullableFilter<"User"> | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     isVerified?: BoolFilter<"User"> | boolean
     verifiedAt?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -10245,18 +10173,14 @@ export namespace Prisma {
     lastName?: SortOrderInput | SortOrder
     avatarUrl?: SortOrderInput | SortOrder
     city?: SortOrderInput | SortOrder
-    lat?: SortOrderInput | SortOrder
-    lng?: SortOrderInput | SortOrder
     role?: SortOrder
     isVerified?: SortOrder
     verifiedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -10270,8 +10194,6 @@ export namespace Prisma {
     lastName?: StringNullableWithAggregatesFilter<"User"> | string | null
     avatarUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     city?: StringNullableWithAggregatesFilter<"User"> | string | null
-    lat?: DecimalNullableWithAggregatesFilter<"User"> | Decimal | DecimalJsLike | number | string | null
-    lng?: DecimalNullableWithAggregatesFilter<"User"> | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     isVerified?: BoolWithAggregatesFilter<"User"> | boolean
     verifiedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -10707,8 +10629,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -10730,8 +10650,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -10753,8 +10671,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10776,8 +10692,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10799,8 +10713,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -10816,8 +10728,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10833,8 +10743,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11306,17 +11214,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type DecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-  }
-
   export type EnumRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
@@ -11414,18 +11311,11 @@ export namespace Prisma {
     lastName?: SortOrder
     avatarUrl?: SortOrder
     city?: SortOrder
-    lat?: SortOrder
-    lng?: SortOrder
     role?: SortOrder
     isVerified?: SortOrder
     verifiedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type UserAvgOrderByAggregateInput = {
-    lat?: SortOrder
-    lng?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -11436,8 +11326,6 @@ export namespace Prisma {
     lastName?: SortOrder
     avatarUrl?: SortOrder
     city?: SortOrder
-    lat?: SortOrder
-    lng?: SortOrder
     role?: SortOrder
     isVerified?: SortOrder
     verifiedAt?: SortOrder
@@ -11453,18 +11341,11 @@ export namespace Prisma {
     lastName?: SortOrder
     avatarUrl?: SortOrder
     city?: SortOrder
-    lat?: SortOrder
-    lng?: SortOrder
     role?: SortOrder
     isVerified?: SortOrder
     verifiedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type UserSumOrderByAggregateInput = {
-    lat?: SortOrder
-    lng?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -11516,22 +11397,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -12065,14 +11930,6 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type NullableDecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string | null
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type EnumRoleFieldUpdateOperationsInput = {
@@ -12710,17 +12567,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-  }
-
   export type NestedEnumRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
@@ -12823,22 +12669,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedDecimalNullableFilter<$PrismaModel>
-    _sum?: NestedDecimalNullableFilter<$PrismaModel>
-    _min?: NestedDecimalNullableFilter<$PrismaModel>
-    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -13517,8 +13347,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -13539,8 +13367,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -13667,8 +13493,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13689,8 +13513,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -13870,8 +13692,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -13892,8 +13712,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -13987,8 +13805,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14009,8 +13825,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14031,8 +13845,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -14053,8 +13865,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -14142,8 +13952,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14164,8 +13972,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14294,8 +14100,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -14316,8 +14120,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -14411,8 +14213,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14433,8 +14233,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14455,8 +14253,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -14477,8 +14273,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -14504,8 +14298,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -14526,8 +14318,6 @@ export namespace Prisma {
     lastName?: string | null
     avatarUrl?: string | null
     city?: string | null
-    lat?: Decimal | DecimalJsLike | number | string | null
-    lng?: Decimal | DecimalJsLike | number | string | null
     role?: $Enums.Role
     isVerified?: boolean
     verifiedAt?: Date | string | null
@@ -14615,8 +14405,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14637,8 +14425,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14670,8 +14456,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14692,8 +14476,6 @@ export namespace Prisma {
     lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
-    lat?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    lng?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

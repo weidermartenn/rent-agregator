@@ -43,8 +43,6 @@ model User {
   lastName   String?   @map("last_name") @db.VarChar(50)
   avatarUrl  String?   @map("avatar_url") @db.VarChar(500)
   city       String?   @db.VarChar(50)
-  lat        Decimal?  @db.Decimal(9, 6)
-  lng        Decimal?  @db.Decimal(9, 6)
   role       Role      @default(USER)
   isVerified Boolean   @default(false) @map("is_verified")
   verifiedAt DateTime? @map("verified_at") @db.Timestamptz()
