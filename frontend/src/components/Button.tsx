@@ -1,6 +1,7 @@
 interface Props {
   text: string;
   onClick?: () => void;
+  onClickForm?: () => void;
 }
 
 export default function Button({ ...props }: Props) {

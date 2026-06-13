@@ -2,14 +2,17 @@
 import { PAGES } from "@/config/pages-class.config";
 import Image from "next/image";
 import Link from "next/link";
-import SearchBar from "./SearchBar";
+import { SearchBar } from "@/components";
 import { Bell, Calendar, Heart, MessageSquare } from "@deemlol/next-icons";
 import { Button } from ".";
 import { useRouter } from "next/navigation";
-import Tooltip from "./Tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { useAuthStore } from "@/store/auth.store";
 
 export default function Header() {
   const router = useRouter();
+
+  const { isAuth } = useAuthStore();
 
   const actions = [
     {
@@ -53,24 +56,35 @@ export default function Header() {
         <ul className="flex items-center space-x-6">
           {actions.map(({ Icon, label, onClick }) => (
             <li key={label}>
-              <Tooltip text={label}>
-                <button
-                  className="flex transition-transform hover:scale-105"
-                  area-label={label}
-                  onClick={onClick}
-                >
-                  <Icon />
-                </button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="flex transition-transform hover:scale-105"
+                    area-label={label}
+                    onClick={onClick}
+                  >
+                    <Icon />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{label}</p>
+                </TooltipContent>
               </Tooltip>
             </li>
           ))}
 
-          <li>
-            <Button
-              text="Войти"
-              onClick={() => router.push(PAGES.LOGIN())}
-            />
-          </li>
+          {isAuth ? (
+            <li>
+              <Button
+                text="Профиль"
+                onClick={() => router.push(PAGES.PROFILE())}
+              />
+            </li>
+          ) : (
+            <li>
+              <Button text="Войти" onClick={() => router.push(PAGES.LOGIN())} />
+            </li>
+          )}
         </ul>
       </nav>
     </header>
