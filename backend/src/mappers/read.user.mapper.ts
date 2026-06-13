@@ -10,6 +10,7 @@ export class ReadUserMapper {
       firstName: user.firstName ?? undefined,
       lastName: user.lastName ?? undefined,
       city: user.city ?? undefined,
+      avatarUrl: user.avatarUrl ?? undefined,
     };
   }
 }
