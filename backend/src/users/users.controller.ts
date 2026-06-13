@@ -22,6 +22,11 @@ import type { MulterFile } from '@/storage';
 export class UsersController {
   constructor(private readonly service: UsersService) {}
 
+  @Get('me')
+  getMe(@CurrentUser() user: User): Promise<ReadUserDTO> {
+    return this.service.getUserData(user.id);
+  }
+
   @Get(':userId')
   getUser(@Param() { userId }: GetUserParams): Promise<ReadUserDTO> {
     return this.service.getUserData(userId);
