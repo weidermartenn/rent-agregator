@@ -15,8 +15,8 @@ import {
 import { PAGES } from "@/config/pages-class.config";
 import { authService } from "@/services/auth.service";
 import { useAuthStore } from "@/store/auth.store";
-import { ArrowLeftCircle } from "@deemlol/next-icons";
 import { useMutation } from "@tanstack/react-query";
+import { ArrowLeftCircleIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -67,7 +67,7 @@ export default function VerifyOtpPage() {
         className="mb-4"
         onClick={() => router.push(PAGES.LOGIN())}
       >
-        <ArrowLeftCircle />
+        <ArrowLeftCircleIcon />
         Изменить почту
       </Button>
       <Card className="bg-zinc-900/30">

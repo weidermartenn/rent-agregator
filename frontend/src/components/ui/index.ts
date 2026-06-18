@@ -11,3 +11,6 @@ export * from './tooltip';
 export * from './carousel';
 export * from './field';
 export * from './input-otp';
+export * from './sonner';
+export * from './avatar';
+export * from './dropdown-menu';

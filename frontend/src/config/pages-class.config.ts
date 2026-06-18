@@ -22,6 +22,18 @@ class PagesConfig {
     PROFILE() {
         return '/profile';
     }
+
+    MESSAGES() {
+        return '/messages';
+    }
+
+    FAVORITES() {
+        return '/favorites';
+    }
+
+    VIEWING_REQUESTS() {
+        return '/viewing-requests';
+    }
 }
 
 export const PAGES = new PagesConfig();

@@ -13,8 +13,8 @@ import {
 } from "@/components/ui";
 import { PAGES } from "@/config/pages-class.config";
 import { authService } from "@/services/auth.service";
-import { ArrowLeftCircle } from "@deemlol/next-icons";
 import { useMutation } from "@tanstack/react-query";
+import { ArrowLeftCircleIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import z from "zod";
@@ -65,7 +65,7 @@ export default function LoginPage() {
         className="mb-4"
         onClick={() => router.push(PAGES.HOME())}
       >
-        <ArrowLeftCircle />
+        <ArrowLeftCircleIcon />
         Вернуться на главную страницу
       </Button>
       <Card className="bg-zinc-900/30">

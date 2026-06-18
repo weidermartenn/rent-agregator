@@ -1,6 +1,6 @@
 "use client";
 
-import { Search } from "@deemlol/next-icons";
+import { Search } from "lucide-react";
 
 export default function SearchBar() {
   return (
